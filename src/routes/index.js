@@ -6,3 +6,7 @@ const router = express.Router();
 router.use("/concerts", concertsRoutes);
 
 export default router;
+
+import favoritesRoutes from "./favorites.routes.js";
+
+router.use("/favorites", favoritesRoutes);
