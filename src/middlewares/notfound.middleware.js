@@ -1,3 +1,6 @@
-module.exports = (req, res, next) => {
-  res.status(404).json({ status: "error", message: "Not Found", code: "NOT_FOUND" });
+export const notFoundHandler = (req, res, next) => {
+  res.status(404).json({
+    success: false,
+    message: "Ruta no encontrada"
+  });
 };
