@@ -1,5 +1,10 @@
-const app = require("./app");
-const { PORT } = require("./config/env");
-const { loadSeed } = require("./services/db.service");
-loadSeed();
-app.listen(PORT, () => {});
+import dotenv from "dotenv";
+import app from "./app.js";
+
+dotenv.config();
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en puerto ${PORT}`);
+});
