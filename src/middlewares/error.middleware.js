@@ -1,7 +1,11 @@
 export const errorHandler = (err, req, res, next) => {
-  console.error(err.stack);
-  res.status(err.status || 500).json({
+  console.error("Error detectado:", err.message);
+
+  const status = err.status || 500;
+  const message = err.message || "Error interno del servidor";
+
+  res.status(status).json({
     success: false,
-    message: err.message || "Error interno del servidor"
+    message
   });
 };

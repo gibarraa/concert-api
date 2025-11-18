@@ -4,11 +4,12 @@ import {
   addToFavorites,
   removeFromFavorites
 } from "../controllers/favorites.controller.js";
+import { validateFavoriteData } from "../middlewares/validate.middleware.js";
 
 const router = express.Router();
 
 router.get("/", getAllFavorites);
-router.post("/", addToFavorites);
+router.post("/", validateFavoriteData, addToFavorites);
 router.delete("/:concertId", removeFromFavorites);
 
 export default router;
