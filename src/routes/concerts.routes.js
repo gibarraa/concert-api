@@ -46,10 +46,6 @@ router.get("/", getAllConcerts);
  *         description: Concierto no encontrado
  */
 router.get("/:id", getConcert);
-<<<<<<< Updated upstream
-router.post("/", validateConcertData, createConcert);
-router.put("/:id", validateConcertData, updateConcert);
-=======
 
 /**
  * @swagger
@@ -99,7 +95,6 @@ router.put("/:id", validateConcertData, updateConcert);
  *       200:
  *         description: Concierto eliminado
  */
->>>>>>> Stashed changes
 router.delete("/:id", deleteConcert);
 
 export default router;

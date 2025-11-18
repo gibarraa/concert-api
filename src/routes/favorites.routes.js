@@ -26,9 +26,6 @@ const router = express.Router();
  *         description: Lista de favoritos
  */
 router.get("/", getAllFavorites);
-<<<<<<< Updated upstream
-router.post("/", validateFavoriteData, addToFavorites);
-=======
 
 /**
  * @swagger
@@ -56,7 +53,6 @@ router.post("/", validateFavoriteData, addToFavorites);
  *       200:
  *         description: Eliminado
  */
->>>>>>> Stashed changes
 router.delete("/:concertId", removeFromFavorites);
 
 export default router;
