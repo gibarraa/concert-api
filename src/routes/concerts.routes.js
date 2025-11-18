@@ -1,7 +1,18 @@
-const express = require("express");
+import express from "express";
+import {
+  getAllConcerts,
+  getConcert,
+  createConcert,
+  updateConcert,
+  deleteConcert
+} from "../controllers/concerts.controller.js";
+
 const router = express.Router();
-const controller = require("../controllers/concerts.controller");
-const { validateConcertsQuery } = require("../middlewares/validate.middleware");
-router.get("/", validateConcertsQuery, controller.list);
-router.get("/:id", controller.detail);
-module.exports = router;
+
+router.get("/", getAllConcerts);
+router.get("/:id", getConcert);
+router.post("/", createConcert);
+router.put("/:id", updateConcert);
+router.delete("/:id", deleteConcert);
+
+export default router;
