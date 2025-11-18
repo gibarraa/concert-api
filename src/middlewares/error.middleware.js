@@ -1,3 +1,7 @@
-module.exports = (err, req, res, next) => {
-  res.status(500).json({ status: "error", message: "Server Error", code: "SERVER_ERROR" });
+export const errorHandler = (err, req, res, next) => {
+  console.error(err.stack);
+  res.status(err.status || 500).json({
+    success: false,
+    message: err.message || "Error interno del servidor"
+  });
 };
