@@ -1,7 +1,58 @@
-const express = require("express");
+import express from "express";
+import {
+  getAllFavorites,
+  addToFavorites,
+  removeFromFavorites
+} from "../controllers/favorites.controller.js";
+import { validateFavoriteData } from "../middlewares/validate.middleware.js";
+
 const router = express.Router();
-const controller = require("../controllers/favorites.controller");
-router.get("/:userId/favorites", controller.list);
-router.post("/:userId/favorites", controller.add);
-router.delete("/:userId/favorites/:concertId", controller.remove);
-module.exports = router;
+
+/**
+ * @swagger
+ * tags:
+ *   name: Favorites
+ *   description: Endpoints para favoritos
+ */
+
+/**
+ * @swagger
+ * /api/favorites:
+ *   get:
+ *     summary: Obtener favoritos
+ *     tags: [Favorites]
+ *     responses:
+ *       200:
+ *         description: Lista de favoritos
+ */
+router.get("/", getAllFavorites);
+
+/**
+ * @swagger
+ * /api/favorites:
+ *   post:
+ *     summary: Agregar a favoritos
+ *     tags: [Favorites]
+ *     responses:
+ *       201:
+ *         description: Agregado
+ */
+router.post("/", validateFavoriteData, addToFavorites);
+
+/**
+ * @swagger
+ * /api/favorites/{concertId}:
+ *   delete:
+ *     summary: Eliminar de favoritos
+ *     tags: [Favorites]
+ *     parameters:
+ *       - in: path
+ *         name: concertId
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Eliminado
+ */
+router.delete("/:concertId", removeFromFavorites);
+
+export default router;

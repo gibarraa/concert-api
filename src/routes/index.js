@@ -1,10 +1,12 @@
-const express = require("express");
+import express from "express";
+import concertsRoutes from "./concerts.routes.js";
+
 const router = express.Router();
-const concerts = require("./concerts.routes");
-const favorites = require("./favorites.routes");
-router.get("/health", (req, res) => {
-  res.status(200).json({ status: "success", data: { ok: true } });
-});
-router.use("/concerts", concerts);
-router.use("/users", favorites);
-module.exports = router;
+
+router.use("/concerts", concertsRoutes);
+
+export default router;
+
+import favoritesRoutes from "./favorites.routes.js";
+
+router.use("/favorites", favoritesRoutes);
