@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { connectDB } from "./services/db.service.js";
 import concertsRoutes from "./routes/concerts.routes.js";
 import favoritesRoutes from "./routes/favorites.routes.js";
+import healthRoutes from "./routes/health.routes.js";
 import { errorHandler } from "./middlewares/error.middleware.js";
 import { swaggerDocs } from "./docs/swagger.js";
 
@@ -18,6 +19,7 @@ swaggerDocs(app);
 
 connectDB();
 
+app.use("/api/health", healthRoutes);
 app.use("/api/concerts", concertsRoutes);
 app.use("/api/favorites", favoritesRoutes);
 

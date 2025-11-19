@@ -55,10 +55,6 @@ router.get("/:id", getConcert);
  *     tags: [Concerts]
  *     requestBody:
  *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
  *     responses:
  *       201:
  *         description: Concierto creado
